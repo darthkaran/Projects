@@ -92,5 +92,41 @@ public class TicTacToe{
    }
  }
 
+ public static boolean userWinCondition(char board[][]){
+   /*board[0][0] = "0";
+   board[0][1] = "1";
+   board[0][2] = "2";
+
+   board[1][0] = "3";
+   board[1][1] = "4";
+   board[1][2] = "5";
+
+   board[2][0] = "6";
+   board[2][1] = "7";
+   board[2][2] = "8";
+
+   |0|1|2|
+   |3|4|5|
+   |6|7|8|
+   */
+   if((board[0][0] == 'X') && (board[0][1] == 'X') && (board[0][2] = 'X')){
+     return true;
+   } else if((board[1][0] == 'X') && (board[1][1] == 'X') && (board[1][2] = 'X')){
+     return true;
+   } else if(board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] = 'X'){
+     return true;
+   } else if(board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] = 'X'){
+     return true;
+   } else if(board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] = 'X'){
+     return true;
+   } else if(board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] = 'X'){
+     return true;
+   } else if(board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] = 'X'){
+     return true;
+   }else if(board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] = 'X'){
+      return true;
+   }
+ }
+
 
 }
