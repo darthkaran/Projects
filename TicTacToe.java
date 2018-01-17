@@ -72,6 +72,7 @@ public class TicTacToe{
    System.out.println("Where do you want to place your \"X\"");
    int i = scan.nextInt();
    return i;
+   //test
 
  }
 }
