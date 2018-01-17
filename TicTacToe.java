@@ -10,6 +10,8 @@ Will use a 2D String array to store values
  7|8|9
 ***************************/
 
+import java.util.Scanner;
+
 
 public class TicTacToe{
 
@@ -24,6 +26,9 @@ public class TicTacToe{
    printBoard(board);
 
    System.out.println("");
+
+
+
 
  }
 
@@ -41,31 +46,32 @@ public class TicTacToe{
 }
 
  public static void buildBoard(String board[][]){
-   board[0][0] = "-";
+   board[0][0] = "1";
    board[0][1] = "|";
-   board[0][2] = "-";
+   board[0][2] = "2";
    board[0][3] = "|";
-   board[0][4] = "-";
+   board[0][4] = "3";
 
-   board[1][0] = "-";
+   board[1][0] = "4";
    board[1][1] = "|";
-   board[1][2] = "-";
+   board[1][2] = "5";
    board[1][3] = "|";
-   board[1][4] = "-";
+   board[1][4] = "6";
 
-   board[2][0] = "-";
+   board[2][0] = "7";
    board[2][1] = "|";
-   board[2][2] = "-";
+   board[2][2] = "8";
    board[2][3] = "|";
-   board[2][4] = "-";
+   board[2][4] = "9";
  }
 
-/*public static void printSong(Song song) {
-  int min = song.getDuration() / 60;
-  int sec = song.getDuration() % 60;
-  System.out.printf("%s (%s) - %d:%d\n",
-  song.getTitle(), song.getArtist(), min, sec);
-  }
+ public static int getInput(){
+   Scanner scan = new Scanner(System.in);
 
-  */
+
+   System.out.println("Where do you want to place your \"X\"");
+   int i = scan.nextInt();
+   return i;
+
+ }
 }
