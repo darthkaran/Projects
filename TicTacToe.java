@@ -73,6 +73,7 @@ public class TicTacToe{
    int i = scan.nextInt();
    return i;
    //test
+   //should work now
 
  }
 }
