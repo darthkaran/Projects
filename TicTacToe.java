@@ -36,12 +36,14 @@ public class TicTacToe{
 
    System.out.println("");
 
-   while(!userWinCondition(board)){
+   while(!userWinCondition(board) || !computerWinCondition(board)){
      getInput(board);
      printBoard(board);
+     System.out.println("");
      userWinCondition(board);
      computerInput(board);
      printBoard(board);
+     System.out.println("");
      computerWinCondition(board);
 
    }
@@ -78,50 +80,109 @@ public class TicTacToe{
 
  public static void getInput(String board[][]){
    Scanner scan = new Scanner(System.in);
+   boolean openSpace = false;
 
 
-   System.out.println("Where do you want to place your \"X\"");
-   int n = scan.nextInt();
-   if(n == 3 || n == 4 || n == 5){
-     board[1][n-3] = "X";
-   }else if(n == 6|| n == 7|| n == 8){
-     board[1][n-6] = "X";
-   } else{
-     board[0][n] = "X";
+
+   while(!openSpace){
+     System.out.println("Where do you want to place your \"X\"");
+     int n = scan.nextInt();
+
+     if(n == 3 || n == 4 || n == 5){
+       if((board[1][n-3].equals("X")) || (board[1][n-3].equals("O"))){
+        openSpace =false;
+        System.out.println("There is already something in that spot");
+      }else{
+        board[1][n-3] = "X";
+        openSpace = true;
+      }
+     }else if(n == 6|| n == 7|| n == 8){
+       if((board[2][n-6].equals("X")) || (board[2][n-6].equals("O"))){
+        openSpace = false;
+        System.out.println("There is already something in that spot");
+      }else{
+        board[2][n-6] = "X";
+        openSpace = true;
+      }
+     } else if(n == 0|| n == 1|| n == 2){
+       if((board[0][n].equals("X")) || (board[0][n].equals("O"))){
+        openSpace = false;
+        System.out.println("There is already something in that spot");
+      }else{
+        board[0][n] = "X";
+        openSpace = true;
+      }
+     }
    }
+
+
  }
 
  public static void computerInput(String board[][]){
-   Random rand = new Random();
-   int n = rand.nextInt(8) + 0;
+   boolean openSpace = false;
 
-   if(n == 3 || n == 4 || n == 5){
-     board[1][n - 3] = "O";
-   }else if(n == 6|| n == 7|| n == 8){
-     board[1][n - 6] = "O";
-   } else{
-     board[0][n] = "O";
+
+
+   while(!openSpace){
+     Random rand = new Random();
+     int n = rand.nextInt(8) + 0;
+     if(n == 3 || n == 4 || n == 5){
+       if((board[1][n-3].equals("X")) || (board[1][n-3].equals("O"))){
+        openSpace =false;
+      }else{
+        board[1][n - 3] = "O";
+        openSpace = true;
+        System.out.println(n);
+      }
+     }else if(n == 6|| n == 7|| n == 8){
+       if((board[2][n-6].equals("X")) || (board[2][n-6].equals("O"))){
+        openSpace = false;
+      }else{
+        board[2][n-6] = "O";
+        openSpace = true;
+
+        System.out.println(n);
+      }
+     } else if(n == 0|| n == 1|| n == 2){
+       if((board[0][n].equals("X")) || (board[0][n].equals("O"))){
+        openSpace = false;
+      }else{
+        board[0][n] = "O";
+        openSpace = true;
+        System.out.println(n);
+      }
+     }
    }
+
  }
 
  public static boolean userWinCondition(String board[][]){
    if( board[0][0].equals("X") && (board[0][1].equals("X")) && (board[0][2].equals("X") ) ){
+     System.out.println("You win");
      return true;
    } else if((board[1][0].equals("X")) && (board[1][1].equals("X")) && (board[1][2].equals("X"))){
+     System.out.println("You win");
      return true;
    } else if((board[2][0].equals("X")) && (board[2][1].equals("X")) && (board[2][2].equals("X"))){
+     System.out.println("You win");
      return true;
    } else if(board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X")){
+     System.out.println("You win");
      return true;
    } else if(board[0][1].equals("X") && board[1][1].equals("X") && board[2][1].equals("X")){
+     System.out.println("You win");
      return true;
    } else if(board[0][2].equals("X") && board[1][2].equals("X") && board[2][2].equals("X")){
+     System.out.println("You win");
      return true;
    } else if(board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X")){
+     System.out.println("You win");
      return true;
    }else if(board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X")){
+     System.out.println("You win");
       return true;
    }else if(board[0][2].equals("X") && board[1][1].equals("X") && board[2][0].equals("X")){
+     System.out.println("You win");
       return true;
    }else{
      return false;
@@ -131,23 +192,32 @@ public class TicTacToe{
 
   public static boolean computerWinCondition(String board[][]){
     if( board[0][0].equals("O") && (board[0][1].equals("O")) && (board[0][2].equals("O") ) ){
+      System.out.println("Computer wins");
       return true;
     } else if((board[1][0].equals("O")) && (board[1][1].equals("O")) && (board[1][2].equals("O"))){
+      System.out.println("Computer wins");
       return true;
     } else if((board[2][0].equals("O")) && (board[2][1].equals("O")) && (board[2][2].equals("O"))){
+      System.out.println("Computer wins");
       return true;
     } else if(board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O")){
+      System.out.println("Computer wins");
       return true;
     } else if(board[0][1].equals("O") && board[1][1].equals("O") && board[2][1].equals("O")){
+      System.out.println("Computer wins");
       return true;
     } else if(board[0][2].equals("O") && board[1][2].equals("O") && board[2][2].equals("O")){
+      System.out.println("Computer wins");
       return true;
     } else if(board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O")){
+      System.out.println("Computer wins");
       return true;
     }else if(board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O")){
-       return true;
+      System.out.println("Computer wins");
+      return true;
     }else if(board[0][2].equals("O") && board[1][1].equals("O") && board[2][0].equals("O")){
-       return true;
+      System.out.println("Computer wins");
+      return true;
     }else{
       return false;
     }
