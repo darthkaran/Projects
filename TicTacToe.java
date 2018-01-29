@@ -1,6 +1,7 @@
-//Karan Damodar
-//September 16/01/2018
-//TicTacToe
+/**
+ * TicTacToe --- tic tac toe game where user plays a computer
+ * @author   Karan Damodar
+ */
 
 /**************************
 Design of the Board
@@ -37,23 +38,31 @@ public class TicTacToe{
    System.out.println("");
 
    while(!userWinCondition(board) || !computerWinCondition(board)){
+     //Loops while no one has won
      getInput(board);
      printBoard(board);
      System.out.println("");
      userWinCondition(board);
+     if(userWinCondition(board) == true){
+       System.out.println("You win!");
+       break;
+     }
      computerInput(board);
      printBoard(board);
      System.out.println("");
      computerWinCondition(board);
-
+     if(computerWinCondition(board) == true){
+       System.out.println("Computer Wins!");
+       break;
+     }
    }
 
  }
-
- public static boolean gameCondition(){
- return true;
- }
-
+ /**
+  * Prints a board for the user to visualize the game
+  * @param board - the board that needs to be printed
+  *
+  */
  public static void printBoard(String board[][]){
    for(int i = 0; i < board.length; i++){
      System.out.print("|");
@@ -77,7 +86,12 @@ public class TicTacToe{
    board[2][1] = "7";
    board[2][2] = "8";
  }
-
+ /**
+  * gets input from the user and makes sure to check nothing is placed
+  * in the spot the user wants to place their 'x' in
+  * @param board - the board that needs to be altered
+  *
+  */
  public static void getInput(String board[][]){
    Scanner scan = new Scanner(System.in);
    boolean openSpace = false;
@@ -118,6 +132,12 @@ public class TicTacToe{
 
  }
 
+ /**
+  * Input from the computer, right now the computer places its 'O' in a Random
+  * spot but I will make it more challenging in the future
+  * @param board - the board that needs to be altered
+  *
+  */
  public static void computerInput(String board[][]){
    boolean openSpace = false;
 
@@ -155,68 +175,58 @@ public class TicTacToe{
    }
 
  }
-
+ /**
+  * Checks if the user has won
+  * @param board - the board that needs to be checked
+  * @return boolean - True if user has won
+  */
  public static boolean userWinCondition(String board[][]){
    if( board[0][0].equals("X") && (board[0][1].equals("X")) && (board[0][2].equals("X") ) ){
-     System.out.println("You win");
      return true;
    } else if((board[1][0].equals("X")) && (board[1][1].equals("X")) && (board[1][2].equals("X"))){
-     System.out.println("You win");
      return true;
    } else if((board[2][0].equals("X")) && (board[2][1].equals("X")) && (board[2][2].equals("X"))){
-     System.out.println("You win");
      return true;
    } else if(board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X")){
-     System.out.println("You win");
      return true;
    } else if(board[0][1].equals("X") && board[1][1].equals("X") && board[2][1].equals("X")){
-     System.out.println("You win");
      return true;
    } else if(board[0][2].equals("X") && board[1][2].equals("X") && board[2][2].equals("X")){
-     System.out.println("You win");
      return true;
    } else if(board[0][0].equals("X") && board[1][0].equals("X") && board[2][0].equals("X")){
-     System.out.println("You win");
      return true;
    }else if(board[0][0].equals("X") && board[1][1].equals("X") && board[2][2].equals("X")){
-     System.out.println("You win");
       return true;
    }else if(board[0][2].equals("X") && board[1][1].equals("X") && board[2][0].equals("X")){
-     System.out.println("You win");
       return true;
    }else{
      return false;
    }
   }
 
-
+  /**
+   * Checks if computer has won
+   * @param board - the board that needs to be printed
+   * @return boolean - returns true if computer wins
+   */
   public static boolean computerWinCondition(String board[][]){
     if( board[0][0].equals("O") && (board[0][1].equals("O")) && (board[0][2].equals("O") ) ){
-      System.out.println("Computer wins");
       return true;
     } else if((board[1][0].equals("O")) && (board[1][1].equals("O")) && (board[1][2].equals("O"))){
-      System.out.println("Computer wins");
       return true;
     } else if((board[2][0].equals("O")) && (board[2][1].equals("O")) && (board[2][2].equals("O"))){
-      System.out.println("Computer wins");
       return true;
     } else if(board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O")){
-      System.out.println("Computer wins");
       return true;
     } else if(board[0][1].equals("O") && board[1][1].equals("O") && board[2][1].equals("O")){
-      System.out.println("Computer wins");
       return true;
     } else if(board[0][2].equals("O") && board[1][2].equals("O") && board[2][2].equals("O")){
-      System.out.println("Computer wins");
       return true;
     } else if(board[0][0].equals("O") && board[1][0].equals("O") && board[2][0].equals("O")){
-      System.out.println("Computer wins");
       return true;
     }else if(board[0][0].equals("O") && board[1][1].equals("O") && board[2][2].equals("O")){
-      System.out.println("Computer wins");
       return true;
     }else if(board[0][2].equals("O") && board[1][1].equals("O") && board[2][0].equals("O")){
-      System.out.println("Computer wins");
       return true;
     }else{
       return false;
